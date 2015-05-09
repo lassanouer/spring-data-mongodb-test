@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.datomic:datomic-pro:DATOMIC_VERSION">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/datomic/datomic-pro/DATOMIC_VERSION/datomic-pro-DATOMIC_VERSION.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/datomic/datomic-pro/DATOMIC_VERSION/datomic-pro-DATOMIC_VERSION-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/datomic/datomic-pro/DATOMIC_VERSION/datomic-pro-DATOMIC_VERSION-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
