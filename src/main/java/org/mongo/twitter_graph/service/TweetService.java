@@ -1,11 +1,10 @@
 package org.mongo.twitter_graph.service;
 
 import org.mongo.twitter_graph.domain.Post;
-import org.mongo.twitter_graph.repository.PostRepository;
+import org.mongo.twitter_graph.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +12,7 @@ import java.util.List;
 @Service
 public class TweetService {
 
-    @Autowired
-    private PostRepository postRepository;
+    private UserRepository<Post> postRepository;
 
     private final Logger log = LoggerFactory.getLogger(TweetService.class);
 

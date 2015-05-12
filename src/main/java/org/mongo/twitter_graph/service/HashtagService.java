@@ -1,13 +1,10 @@
 package org.mongo.twitter_graph.service;
 
 import org.mongo.twitter_graph.domain.Hashtag;
-import org.mongo.twitter_graph.domain.User;
-import org.mongo.twitter_graph.repository.HashtagRepository;
-import org.mongo.twitter_graph.repository.PostRepository;
+import org.mongo.twitter_graph.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,8 +13,7 @@ import java.util.List;
 @Service
 public class HashtagService {
 
-    @Autowired
-    private HashtagRepository hashtagRepository;
+    UserRepository<Hashtag> hashtagRepository;
 
     private final Logger log = LoggerFactory.getLogger(HashtagService.class);
 

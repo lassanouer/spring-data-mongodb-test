@@ -56,5 +56,6 @@ public class TwitterApplication {
         Execution exe = new Execution();
         //app.setShowBanner(false);
         SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
+
 	}
 }
