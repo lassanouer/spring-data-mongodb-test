@@ -19,7 +19,6 @@ public class DatabaseConfiguration extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        //return mongoDbFactory.getDb("test").getName();
         return "test";
     }
 

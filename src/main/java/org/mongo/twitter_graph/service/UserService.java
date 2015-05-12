@@ -17,7 +17,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository<User> userRepository;
 
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 

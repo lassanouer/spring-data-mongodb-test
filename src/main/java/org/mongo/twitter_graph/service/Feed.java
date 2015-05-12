@@ -16,9 +16,9 @@ import org.mongo.twitter_graph.domain.Post;
 import org.mongo.twitter_graph.domain.User;
 import org.mongo.twitter_graph.repository.PostRepository;
 import org.mongo.twitter_graph.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import twitter4j.*;
 import twitter4j.Query;
 import twitter4j.conf.ConfigurationBuilder;
@@ -28,19 +28,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import javax.annotation.Resource;
 
 /**
  * Created by Lassoued
  * on 18/03/2015.
  */
-@Component
+@Controller
 public class Feed {
 
-    @Resource
-    UserRepository userRepository;
+    @Autowired
+    UserRepository<User> userRepository;
 
-    @Resource
+    @Autowired
     PostRepository tweetRepository;
 
     // The Facebook and Twitter clients
@@ -220,7 +219,7 @@ public class Feed {
                     System.out.println("Page :  " + feeds.get(i).getName() + " liked By :   ");
                     PagableList<Like> likePage = feeds.get(i).getLikes();
                     for (Like likeP : likePage) {
-                        User follower = userRepository.findOne(likeP.getId());
+                        User follower = new User();// = userRepository.findOne(likeP.getId());
                         System.out.println("____________________" + likeP.getId() + "  " + likeP.getName());
                         if(follower==null) {
                             follower.setReseau("Facebook");
@@ -250,7 +249,7 @@ public class Feed {
                         }
                         for (Like cmntLike : cmntLikes) {
                             System.out.println(cmntLike.getId() + " " + cmntLike.getName() + " ");
-                            User follower = userRepository.findOne(cmntLike.getId());;
+                            User follower = new User();//= userRepository.findOne(cmntLike.getId());;
                             if(follower==null) {
                                 follower.setReseau("Facebook");
                                 follower.setUser(cmntLike.getName());
@@ -273,7 +272,7 @@ public class Feed {
                 for (Photo photo : photos) {
                     PagableList<Like> likePhotos = photo.getLikes();
                     for (Like likePhoto : likePhotos) {
-                        User follower0 =userRepository.findOne(likePhoto.getId());;
+                        User follower0 = new User();//userRepository.findOne(likePhoto.getId());;
                         if(follower0==null) {
                             follower0.setReseau("Facebook");
                             follower0.setUser(likePhoto.getName());
@@ -303,7 +302,7 @@ public class Feed {
                             e.printStackTrace();
                         }
                         for (Like cmntPhotoLike : cmntPhotoLikes) {
-                            User follower0 = userRepository.findOne(cmntPhotoLike.getId());;
+                            User follower0= new User();// = userRepository.findOne(cmntPhotoLike.getId());;
                             if(follower0==null) {
                                 follower0.setReseau("Facebook");
                                 follower0.setUser(cmntPhotoLike.getName());
@@ -345,7 +344,7 @@ public class Feed {
                             e.printStackTrace();
                         }
                         for (Like cmntVideoLike : cmntVideoLikes) {
-                            User follower1 = userRepository.findOne(cmntVideoLike.getId());;
+                            User follower1 = new User();//= userRepository.findOne(cmntVideoLike.getId());;
                             if(follower1==null) {
                                 follower1.setReseau("Facebook");
                                 follower1.setUser(cmntVideoLike.getName());
