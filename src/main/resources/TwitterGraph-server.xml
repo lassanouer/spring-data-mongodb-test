@@ -12,6 +12,7 @@
         http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
 		http://www.springframework.org/schema/tx
     http://www.springframework.org/schema/tx/spring-tx.xsd">
+
     <context:component-scan base-package="org.mongo.twitter_graph.service"/>
     <mongo:mongo id="mongoServer" host="127.0.0.1" port="27017" />
     <bean id="mongoTemplate"
@@ -19,31 +20,13 @@
         <constructor-arg ref="mongoServer"/>
         <constructor-arg name="databaseName" value="test"/>
     </bean>
-    <context:annotation-config />
-    <mongo:db-factory  mongo-ref="mongoServer" id="mongoDbFactory" dbname="test" host="127.0.0.1" port="27017"  />
 
     <mongo:repositories base-package="org.mongo.twitter_graph.repository">
         <mongo:repository id="userRepository" mongo-template-ref="userRepository"/>
-        <mongo:repository id="topicRepository" mongo-template-ref="topicRepository"/>
-        <mongo:repository id="tweetRepository" mongo-template-ref="tweetRepository"/>
-        <mongo:repository id="hashtagRepository" mongo-template-ref="hashtagRepository"/>
     </mongo:repositories>
+
     <tx:annotation-driven mode="proxy"/>
-    <context:component-scan base-package="org.mongo.twitter_graph.service"/>
 
-    <bean id="userRepsitory" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg ref="mongoServer"/>
-        <constructor-arg name="databaseName" value="test"/>
-    </bean>
-
-    <bean id="postRepository" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg ref="mongoServer"/>
-        <constructor-arg name="databaseName" value="test"/>
-    </bean>
-    <bean id="hashtagService" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg ref="mongoServer"/>
-        <constructor-arg name="databaseName" value="test"/>
-    </bean>
     <bean name="DatabaseConfiguration" class="org.mongo.twitter_graph.controler.DatabaseConfiguration"/>
 
 </beans>
