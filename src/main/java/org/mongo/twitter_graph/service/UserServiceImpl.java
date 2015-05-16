@@ -4,17 +4,19 @@ import org.mongo.twitter_graph.domain.User;
 import org.mongo.twitter_graph.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class UserServiceImpl {
+@Component
+public class UserServiceImpl implements UserService {
 
-    @Inject
-     UserRepository<User> userRepository;
+    //@Inject
+    UserRepository<User> userRepository;
 
     private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -61,5 +63,10 @@ public class UserServiceImpl {
         }
         userRepository.delete(existingUser);
         return true;
+    }
+
+    @Override
+    public UserRepository<User> getRepository() {
+        return userRepository;
     }
 }
